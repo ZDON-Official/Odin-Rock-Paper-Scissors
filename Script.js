@@ -1,3 +1,5 @@
+// script for index.html
+
 function getComputerChoice(){
     var rand = Math.floor(Math.random()*3)
 
