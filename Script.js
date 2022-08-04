@@ -39,7 +39,7 @@ function Game(){
     var Cscore = 0
 
     for(let i=0;i<5;i++){
-        const playerSelection = prompt()
+        const playerSelection = prompt("Chose Rock, Paper, or Scissor!")
         const ComputerSelection = getComputerChoice()
         var ret = PlayRound(ComputerSelection, playerSelection)
 
@@ -61,5 +61,7 @@ function Game(){
     return "It's a Draw"
 }
 
-Game()
+var res = Game()
+console.log(res)
+document.getElementById("ret").innerHTML = res
 
