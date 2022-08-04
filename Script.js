@@ -23,21 +23,43 @@ function PlayRound(getComputerChoice, playerSelection){
     if(Cp === "paper" && Ps === "rock"){
         
         return "You Lose! Paper beats Rock"
-    } else if(Cp === "paper" && Ps === "rock"){
+    } else if(Cp === "rock" && Ps === "scissor"){
 
-        return "You Lose! Paper beats Rock"
-    } else if(Cp === "paper" && Ps === "rock"){
+        return "You Lose! Rock beats Scissor"
+    } else if(Cp === "scissor" && Ps === "paper"){
 
-        return "You Lose! Paper beats Rock"
+        return "You Lose! Scissors beats Paper"
     }
 
     return "You Win! " + Ps + " beats " + Cp
 }
 
+function Game(){
+    var Pscore = 0
+    var Cscore = 0
 
-// for(let i=0; i<20;i++){
-//     console.log(getComputerChoice())
-// }
+    for(let i=0;i<5;i++){
+        const playerSelection = prompt()
+        const ComputerSelection = getComputerChoice()
+        var ret = PlayRound(ComputerSelection, playerSelection)
 
-var ans = PlayRound(getComputerChoice(), "Rock")
+        if(ret.includes("Win")){
+            Pscore++
+        } else{
+            Cscore++
+        }
+
+        console.log(ret)
+    }
+
+    if(Pscore > Cscore){
+        return "You Win!!"
+    } else if(Pscore < Cscore){
+        return "You Lost!"
+    } 
+
+    return "It's a Draw"
+}
+
+Game()
 
