@@ -44,19 +44,6 @@ function PlayRound(getComputerChoice, playerSelection) {
 
 function Game() {
   while (playerScore < 5 || computerScore < 5) {
-    const ComputerSelection = getComputerChoice();
-
-    rockButton.addEventListener("click", function () {
-      console.log("rock clicked");
-      result = PlayRound(ComputerSelection, "rock");
-    });
-    paperButton.addEventListener("click", function () {
-      result = PlayRound(ComputerSelection, "paper");
-    });
-    paperButton.addEventListener("click", function () {
-      result = PlayRound(ComputerSelection, "scissor");
-    });
-
     if (result.includes("Win")) {
       playerScore++;
     } else {
@@ -66,8 +53,6 @@ function Game() {
     // update scores
     Pscore.innerHTML = playerScore;
     Cscore.innerHTML = computerScore;
-
-    // console.log(result);
   }
 
   if (Pscore > Cscore) {
@@ -79,5 +64,50 @@ function Game() {
   return "It's a Draw";
 }
 
-var res = Game();
-console.log(res);
+function isOver() {
+  return playerScore === 5 || computerScore === 5;
+}
+
+function showResult() {
+  if (playerScore > computerScore) {
+    resultDisplay.innerHTML = "You Win!!";
+  } else if (Pscore < Cscore) {
+    resultDisplay.innerHTML = "You Lost!";
+  }
+
+  resultDisplay.innerHTML = "It's a Draw";
+}
+
+// updates the scoreboard
+function updateScores() {
+  Pscore.innerHTML = playerScore;
+  Cscore.innerHTML = computerScore;
+}
+
+// one of the buttons is clicked
+function buttonClicked(playerSelection) {
+  // check if the game is over (one player won 5 times)
+  if (isOver) {
+    resultDisplay.innerHTML = "Game Over";
+    return;
+  }
+
+  result = PlayRound(getComputerChoice, playerSelection);
+
+  if (result.includes("Win")) {
+    playerScore++;
+  } else {
+    computerScore++;
+  }
+}
+
+rockButton.addEventListener("click", function () {
+  console.log("rock clicked");
+  buttonClicked("rock");
+});
+paperButton.addEventListener("click", function () {
+  buttonClicked("paper");
+});
+paperButton.addEventListener("click", function () {
+  buttonClicked("scissors");
+});
