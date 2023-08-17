@@ -17,10 +17,11 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 90vh;
+    height: 100vh;
     box-sizing: border-box;
     margin: 0%;
     padding: 0%;
+    padding-bottom: 10px;
 
     background-color: var(--background_color);
     color: var(--primary_color);
@@ -46,8 +47,20 @@ button:hover{
 }
 
 .title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 3em;
     font-weight: 500;
+    box-sizing: border-box;
+    margin: 0%;
+    margin-top: 20px;
+    padding: 0;
+    width: 100vw;
+    /* height: 60px; */
+    /* background-color: #0d1919; */
+    /* color: var(--background_color); */
+    /* border: solid; */
 }
 
 .result{
@@ -74,8 +87,12 @@ button:hover{
 }
 
 #restart_btn{
-    /* visibility: hidden; */
+    visibility: hidden;
     border-radius: 0;
     width: 200px;
     font-size: 1.5em;
+}
+
+.copyright{
+    font-size: 14px;
 }

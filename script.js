@@ -8,6 +8,8 @@ const rockButton = document.getElementById("rock");
 const paperButton = document.getElementById("paper");
 const scissorsButton = document.getElementById("scissors");
 
+const restartButton = document.getElementById("restart_btn");
+
 const Pscore = document.getElementById("playerScore");
 const Cscore = document.getElementById("computerScore");
 
@@ -31,25 +33,25 @@ function PlayRound(getComputerChoice, playerSelection) {
   var status;
 
   if (Ps === Cp) {
-    console.log("draw");
+    console.log("in draw");
     resultDisplay.innerHTML = "It's a Draw";
     return;
   }
 
   if (Cp === "paper" && Ps === "rock") {
     console.log("paper beats rock");
-    resultDisplay.inertHTML = "You lose! Paper beats rock";
+    resultDisplay.innerHTML = `You lose! Paper beats rock`;
     status = false;
   } else if (Cp === "rock" && Ps === "scissor") {
     console.log("rock beats scissor");
 
-    resultDisplay.inertHTML = "You lose! Rock beats scissor";
+    resultDisplay.innerHTML = `You lose! Rock beats scissor`;
 
     status = false;
   } else if (Cp === "scissor" && Ps === "paper") {
     console.log("scissor cuts paper");
 
-    resultDisplay.inertHTML = "You lose! scissor cuts paper";
+    resultDisplay.innerHTML = `You lose! scissor cuts paper`;
 
     status = false;
   } else {
@@ -106,7 +108,12 @@ function buttonClicked(playerSelection) {
 }
 
 // TODO: restart the game when the user clicks the restart button
-function restart() {}
+function restart() {
+  playerScore = 0;
+  computerScore = 0;
+  resultDisplay.innerHTML = "";
+  updateScoreboard();
+}
 
 rockButton.addEventListener("click", function () {
   // console.log("rock clicked");
@@ -117,6 +124,9 @@ paperButton.addEventListener("click", function () {
 });
 scissorsButton.addEventListener("click", function () {
   buttonClicked("scissor");
+});
+restartButton.addEventListener("click", function () {
+  restart();
 });
 
 // TODO: add a restart button event listener
