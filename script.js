@@ -100,6 +100,7 @@ function buttonClicked(playerSelection) {
   const computerChoice = getComputerChoice();
   if (isOver()) {
     showResult();
+    restart_btn.style.visibility = "visible";
     return;
   }
 
