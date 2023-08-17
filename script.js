@@ -108,12 +108,12 @@ function buttonClicked(playerSelection) {
   updateScoreboard();
 }
 
-// TODO: restart the game when the user clicks the restart button
 function restart() {
   playerScore = 0;
   computerScore = 0;
   resultDisplay.innerHTML = "";
   updateScoreboard();
+  restart_btn.style.visibility = "hidden";
 }
 
 rockButton.addEventListener("click", function () {
@@ -129,5 +129,3 @@ scissorsButton.addEventListener("click", function () {
 restartButton.addEventListener("click", function () {
   restart();
 });
-
-// TODO: add a restart button event listener
