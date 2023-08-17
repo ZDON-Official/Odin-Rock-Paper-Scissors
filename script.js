@@ -27,51 +27,49 @@ function PlayRound(getComputerChoice, playerSelection) {
   Ps = playerSelection.toLowerCase();
   Cp = getComputerChoice;
 
+  var status;
+
   if (Ps === Cp) {
-    return "It's a draw!";
+    return;
   }
 
   if (Cp === "paper" && Ps === "rock") {
-    return "You Lose! Paper beats Rock";
+    console.log("computer won, rock and paper");
+    status = false;
   } else if (Cp === "rock" && Ps === "scissor") {
-    return "You Lose! Rock beats Scissor";
+    console.log("computer won, rock and scissors");
+
+    status = false;
   } else if (Cp === "scissor" && Ps === "paper") {
-    return "You Lose! Scissors beats Paper";
+    console.log("computer won, scissor and paper");
+
+    status = false;
+  } else {
+    console.log("player won");
+    status = true;
   }
 
-  return "You Win! " + Ps + " beats " + Cp;
+  updateScores(status);
 }
 
-function Game() {
-  while (playerScore < 5 || computerScore < 5) {
-    if (result.includes("Win")) {
-      playerScore++;
-    } else {
-      computerScore++;
-    }
-
-    // update scores
-    Pscore.innerHTML = playerScore;
-    Cscore.innerHTML = computerScore;
+function updateScores(boolean) {
+  console.log(`updating scores ${boolean}`);
+  if (boolean) {
+    playerScore++;
+  } else {
+    computerScore++;
   }
-
-  if (Pscore > Cscore) {
-    return "You Win!!";
-  } else if (Pscore < Cscore) {
-    return "You Lost!";
-  }
-
-  return "It's a Draw";
 }
 
 function isOver() {
+  // console.log(`inside isOver ${playerScore === 5 || computerScore === 5}`);
   return playerScore === 5 || computerScore === 5;
 }
 
 function showResult() {
   if (playerScore > computerScore) {
     resultDisplay.innerHTML = "You Win!!";
-  } else if (Pscore < Cscore) {
+  } else if (playerScore < computerScore) {
     resultDisplay.innerHTML = "You Lost!";
   }
 
@@ -79,7 +77,7 @@ function showResult() {
 }
 
 // updates the scoreboard
-function updateScores() {
+function updateScoreboard() {
   Pscore.innerHTML = playerScore;
   Cscore.innerHTML = computerScore;
 }
@@ -87,27 +85,23 @@ function updateScores() {
 // one of the buttons is clicked
 function buttonClicked(playerSelection) {
   // check if the game is over (one player won 5 times)
-  if (isOver) {
+  const computerChoice = getComputerChoice();
+  if (isOver()) {
     resultDisplay.innerHTML = "Game Over";
     return;
   }
 
-  result = PlayRound(getComputerChoice, playerSelection);
-
-  if (result.includes("Win")) {
-    playerScore++;
-  } else {
-    computerScore++;
-  }
+  PlayRound(computerChoice, playerSelection);
+  updateScoreboard();
 }
 
 rockButton.addEventListener("click", function () {
-  console.log("rock clicked");
+  // console.log("rock clicked");
   buttonClicked("rock");
 });
 paperButton.addEventListener("click", function () {
   buttonClicked("paper");
 });
-paperButton.addEventListener("click", function () {
-  buttonClicked("scissors");
+scissorsButton.addEventListener("click", function () {
+  buttonClicked("scissor");
 });
