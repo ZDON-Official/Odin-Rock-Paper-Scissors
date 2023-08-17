@@ -4,21 +4,33 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        />
+        <script
+            src="https://kit.fontawesome.com/2481b66331.js"
+            crossorigin="anonymous"
+        ></script>
+
         <title>Odin Rock Paper Scissors</title>
     </head>
 
     <body>
-        <h1>Rock paper Scissors</h1>
+        <h1 class="title">Rock Paper Scissors</h1>
         <div class="scores">
             <div class="playerScore">Player - <span id="playerScore">0</span></div>
             <div class="computerScore">Computer - <span id="computerScore">0</span></div>
         </div>
-        <div id="result">Chose rock, paper, or scissors!</div>
-        <div>
-            <button id="rock">Rock</button>
-            <button id="paper">paper</button>
-            <button id="scissors">scissors</button>
+        <div class="result">Result - <span id="result"></span></div>
+        <div >
+            <button id="rock" class="buttons">Rock</button>
+            <button id="paper" class="buttons">Paper</button>
+            <button id="scissors" class="buttons">Scissors</button>
         </div>
+        <button id="restart_btn">Restart</button>
     </body>
     <script src="script.js"></script>
 </html>

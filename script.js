@@ -27,33 +27,43 @@ function PlayRound(getComputerChoice, playerSelection) {
   Ps = playerSelection.toLowerCase();
   Cp = getComputerChoice;
 
+  resultDisplay.innerHTML = "";
   var status;
 
   if (Ps === Cp) {
+    console.log("draw");
+    resultDisplay.innerHTML = "It's a Draw";
     return;
   }
 
   if (Cp === "paper" && Ps === "rock") {
-    console.log("computer won, rock and paper");
+    console.log("paper beats rock");
+    resultDisplay.inertHTML = "You lose! Paper beats rock";
     status = false;
   } else if (Cp === "rock" && Ps === "scissor") {
-    console.log("computer won, rock and scissors");
+    console.log("rock beats scissor");
+
+    resultDisplay.inertHTML = "You lose! Rock beats scissor";
 
     status = false;
   } else if (Cp === "scissor" && Ps === "paper") {
-    console.log("computer won, scissor and paper");
+    console.log("scissor cuts paper");
+
+    resultDisplay.inertHTML = "You lose! scissor cuts paper";
 
     status = false;
   } else {
-    console.log("player won");
+    resultDisplay.innerHTML = `You win! ${Ps} beats ${Cp}`;
     status = true;
   }
+
+  console.log(`status ${status}`);
 
   updateScores(status);
 }
 
 function updateScores(boolean) {
-  console.log(`updating scores ${boolean}`);
+  // console.log(`updating scores ${boolean}`);
   if (boolean) {
     playerScore++;
   } else {
@@ -71,9 +81,9 @@ function showResult() {
     resultDisplay.innerHTML = "You Win!!";
   } else if (playerScore < computerScore) {
     resultDisplay.innerHTML = "You Lost!";
+  } else {
+    resultDisplay.innerHTML = "It's a Draw";
   }
-
-  resultDisplay.innerHTML = "It's a Draw";
 }
 
 // updates the scoreboard
@@ -87,7 +97,7 @@ function buttonClicked(playerSelection) {
   // check if the game is over (one player won 5 times)
   const computerChoice = getComputerChoice();
   if (isOver()) {
-    resultDisplay.innerHTML = "Game Over";
+    showResult();
     return;
   }
 
