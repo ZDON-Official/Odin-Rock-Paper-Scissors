@@ -95,6 +95,9 @@ function buttonClicked(playerSelection) {
   updateScoreboard();
 }
 
+// TODO: restart the game when the user clicks the restart button
+function restart() {}
+
 rockButton.addEventListener("click", function () {
   // console.log("rock clicked");
   buttonClicked("rock");
@@ -105,3 +108,5 @@ paperButton.addEventListener("click", function () {
 scissorsButton.addEventListener("click", function () {
   buttonClicked("scissor");
 });
+
+// TODO: add a restart button event listener
