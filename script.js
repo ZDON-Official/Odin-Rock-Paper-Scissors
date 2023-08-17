@@ -44,17 +44,17 @@ function PlayRound(getComputerChoice, playerSelection) {
 
 function Game() {
   while (playerScore < 5 || computerScore < 5) {
-    // const ComputerSelection = getComputerChoice();
+    const ComputerSelection = getComputerChoice();
 
     rockButton.addEventListener("click", function () {
       console.log("rock clicked");
-      result = PlayRound(getComputerChoice(), "rock");
+      result = PlayRound(ComputerSelection, "rock");
     });
     paperButton.addEventListener("click", function () {
-      result = PlayRound(getComputerChoice(), "paper");
+      result = PlayRound(ComputerSelection, "paper");
     });
     paperButton.addEventListener("click", function () {
-      result = PlayRound(getComputerChoice(), "scissor");
+      result = PlayRound(ComputerSelection, "scissor");
     });
 
     if (result.includes("Win")) {
@@ -67,7 +67,7 @@ function Game() {
     Pscore.innerHTML = playerScore;
     Cscore.innerHTML = computerScore;
 
-    console.log(result);
+    // console.log(result);
   }
 
   if (Pscore > Cscore) {
