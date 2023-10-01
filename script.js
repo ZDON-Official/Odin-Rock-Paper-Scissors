@@ -34,28 +34,31 @@ function PlayRound(getComputerChoice, playerSelection) {
 
   if (Ps === Cp) {
     console.log("in draw");
-    resultDisplay.innerHTML = "It's a Draw";
+    resultDisplay.innerHTML = "It's a draw!";
     return;
   }
 
   if (Cp === "paper" && Ps === "rock") {
     console.log("paper beats rock");
-    resultDisplay.innerHTML = `You lose! Paper beats rock`;
+    resultDisplay.innerHTML = `You lose! Paper beats rock.`;
     status = false;
   } else if (Cp === "rock" && Ps === "scissor") {
     console.log("rock beats scissor");
 
-    resultDisplay.innerHTML = `You lose! Rock beats scissor`;
+    resultDisplay.innerHTML = `You lose! Rock beats scissor.`;
 
     status = false;
   } else if (Cp === "scissor" && Ps === "paper") {
     console.log("scissor cuts paper");
 
-    resultDisplay.innerHTML = `You lose! scissor cuts paper`;
+    resultDisplay.innerHTML = `You lose! Scissor cuts paper.`;
 
     status = false;
   } else {
-    resultDisplay.innerHTML = `You win! ${Ps} beats ${Cp}`;
+    console.log(Ps.charAt(0).toUpperCase() + Ps.substr(1));
+    resultDisplay.innerHTML = `You win! ${
+      Ps.charAt(0).toUpperCase() + Ps.substr(1)
+    } beats ${Cp}.`;
     status = true;
   }
 
